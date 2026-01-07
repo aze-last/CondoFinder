@@ -18,6 +18,16 @@ Route::get('/auth/google/callback', [\App\Http\Controllers\Auth\SocialiteControl
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
+    // Admin Routes
+    Route::middleware([\Spatie\Permission\Middleware\RoleMiddleware::class . ':Super Admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        Volt::route('owners', 'admin.owners.index')->name('owners.index');
+        Volt::route('showrooms', 'admin.showrooms.index')->name('showrooms.index');
+        Volt::route('listings', 'admin.listings.index')->name('listings.index');
+        Volt::route('inquiries', 'admin.inquiries.index')->name('inquiries.index');
+        Volt::route('viewing-requests', 'admin.viewing-requests.index')->name('viewing-requests.index');
+    });
+
     Volt::route('dashboard/listings', 'dashboard.listings.index')->name('dashboard.listings.index');
     Volt::route('dashboard/listings/create', 'dashboard.listings.form')->name('dashboard.listings.create');
     Volt::route('dashboard/listings/{listing}/edit', 'dashboard.listings.form')->name('dashboard.listings.edit');

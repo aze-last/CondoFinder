@@ -189,19 +189,6 @@
                         </div>
 
                         <!-- Security Badge -->
-                        <div class="absolute -bottom-8 -left-8 hidden md:block">
-                            <div class="rounded-[2.5rem] border-4 border-white bg-neutral-900 p-6 text-white shadow-2xl flex items-start gap-4 ring-1 ring-neutral-900/10">
-                                <div class="h-12 w-12 rounded-2xl bg-white/10 grid place-items-center shrink-0">
-                                    <flux:icon.shield-check class="h-7 w-7" />
-                                </div>
-                                <div>
-                                    <div class="text-sm font-black tracking-tight">{{ __('Security-first') }}</div>
-                                    <div class="mt-1 text-[11px] font-medium text-white/60 max-w-[180px] leading-tight">
-                                        {{ __('Ownership checks, validation, and secure uploads by default.') }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>

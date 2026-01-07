@@ -9,8 +9,12 @@ use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(): mixed
     {
+        if (auth()->user()->hasRole('Super Admin')) {
+            return redirect()->route('admin.dashboard');
+        }
+
         $ownerId = auth()->id();
 
         $totalListings = Listing::where('owner_id', $ownerId)->count();
